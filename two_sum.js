@@ -28,15 +28,39 @@
 // -109 <= target <= 109
 // Only one valid answer exists.
  
-var twoSum = function(nums, target) { 
-    for(let i = 0; i < nums.length; i++) {
-        for (let j = 0; j < nums.length; j++) {
-            if (nums[i] + nums[j] == target) {
-                return [i,j];
-            }
-        }
+// First Solution
+    // var twoSum = function(nums, target) { 
+    //     for(let i = 0; i < nums.length; i++) {
+    //         for (let j = 0; j < nums.length; j++) {
+    //             if (nums[i] + nums[j] == target) {
+    //                 return [i,j];
+    //             }
+    //         }
+    //     }
+    // };
+
+
+    // Runtime: 106 ms
+
+// Second Solution
+
+var twoSum = function(nums, target) {
+    let result = {};
+    
+    for (let i = 0; i < nums.length; i++) {
+        
+        let j = target - nums[i]
+        
+        if(j in result) {
+            
+            return [result[j], i]
+        } 
+        
+        result[nums[i]] = i;
     }
+    
+    return null;
 };
 
-
-// Runtime: 106 ms
+// Runtime: 64 ms
+// Memory Usage: 40.7 MB
